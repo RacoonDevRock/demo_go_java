@@ -28,11 +28,9 @@ Inicializar un proyecto en Java puede ser tedioso debido a la gran cantidad de c
 
 Spring Initializr permite añadir dependencias del ecosistema de Java de forma sencilla.
 
-![Búsqueda de dependencias](../images/spring_initializr_dependencies.png)
-
 ![Buscador de dependencias](../images/spring_initializr_dependencies_search.png)
 
-Solo con un clic puedes agregar librerías que se integran de forma automática al proyecto.
+Solo con un clic (o enter) puedes agregar librerías que se agregan de forma automática al proyecto.
 
 ![Dependencia añadida](../images/spring_initializr_dependencie_install.png)
 
@@ -208,3 +206,8 @@ public class TasksApplication {
 ```
 
 > @SpringBootApplication ->  Esto permite que Spring Boot detecte todos los módulos, servicios y configuraciones necesarias para iniciar la aplicación sin configuración manual.
+
+___
+
+
+[Guia de estructuracion DDD + Arq. Hexagonal](https://medium.com/@juannegrin/construyendo-una-restful-api-con-spring-boot-integraci%C3%B3n-de-ddd-y-arquitectura-hexagonal-af824a3a4d05) 
