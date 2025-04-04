@@ -225,8 +225,197 @@ public class TasksApplication {
 
 ___
 
+## ▶️ Ejecuvion de la aplicación
+Puedes ejecutar tu aplicación de estas formas:
+
+### 1. Desde IntelliJ IDEA
+Haz clic en el botón verde ▶️ que aparece al lado de tu clase `TasksApplication.java`
+
+![Run Application](../images/init_spring_app.png)
+
+### 2. Desde terminal (requiere Maven o el wrapper `mvnw`)
+```bash
+./mvnw spring-boot:run   # Linux/macOS
+mvnw.cmd spring-boot:run # Windows
+```
+
+Puedes verificar el inicio de la aplicacion en el puerto https://localhost:8080
+
+![run_port_app](../images/run_port_app.png)
+
+___
+
 ## Fuentes: 
 
 [Guia de estructuracion DDD + Arq. Hexagonal](https://medium.com/@juannegrin/construyendo-una-restful-api-con-spring-boot-integraci%C3%B3n-de-ddd-y-arquitectura-hexagonal-af824a3a4d05) 
 
-[Arquitectura Hexagonal con SpringBoot](https://medium.com/@oliveraluis11/arquitectura-hexagonal-con-spring-boot-parte-1-57b797eca69c)
+# 🧱 Implementación de Arquitectura Hexagonal + DDD
+
+En este ejemplo hemos implementado una estructura basada en **Arquitectura Hexagonal (Ports & Adapters)** y **Domain-Driven Design (DDD)**, organizada en **módulos independientes** o **bounded contexts**: `subtasks` y `notifications`.
+
+Cada módulo mantiene sus **capas independientes**:
+- `domain`: lógica de negocio pura
+- `application`: casos de uso
+- `infrastructure`: interacción con el mundo exterior (frameworks, controladores, base de datos, etc.)
+
+📸 Estructura del proyecto:
+![Structure](../images/project_structure.png)
+
+---
+
+## 🎯 Caso de uso implementado
+
+Simulamos la creación de una `Subtask` (subtarea).  
+Cuando se crea, se publica un evento de dominio que el módulo `notifications` **escucha** y, como reacción, muestra por consola que la subtarea fue creada.
+
+---
+
+## 📦 1. Dominio: lógica del negocio
+
+En la capa `domain` definimos:
+
+- La **entidad `Subtask`**, que representa nuestro agregado raíz.
+- La **interfaz `SubtaskRepository`**, que actúa como puerto de salida para abstraer la persistencia.
+
+```plaintext
+└── 📁domain
+    └── Subtask.java
+    └── SubtaskRepository.java
+```
+
+![Subtask Domain Content](../images/domain_class.png)
+> ✅ Esta capa es completamente independiente del framework. No usamos @Entity, @Autowired, ni nada de Spring aquí.
+
+## ⚙️ 2. Aplicación: casos de uso
+En la capa application definimos los casos de uso, que son acciones que un actor del sistema puede ejecutar.
+En este caso, implementamos un CRUD completo:
+```
+└── 📁application
+    └── CreateSubtaskUseCase.java
+    └── DeleteSubtaskUseCase.java
+    └── GetAllSubtaskUseCase.java
+    └── UpdateSubtaskUseCase.java
+```
+
+![Subtasl Appliction Create](../images/create_subtask.png)
+> Cada clase se encarga de orquestar una operación del negocio, sin tener conocimiento del framework ni detalles técnicos.
+
+## 🌐 3. Infraestructura: adaptadores externos
+La capa infrastructure contiene los adaptadores para interactuar con el exterior, incluyendo:
+
+* El controlador REST (SubtaskController) con los endpoints de la API.
+
+* La entidad persistente JPA (SubtaskEntity).
+
+* El repositorio JPA y su implementación (JPASubtaskRepository, SubtaskRepositoryImpl).
+```
+└── 📁infrastructure
+    └── JPASubtaskRepository.java
+    └── SubtaskController.java
+    └── SubtaskEntity.java
+    └── SubtaskRepositoryImpl.java
+```
+
+Entidad definida:
+![Subtask Entity](../images/subtask_entity.png)
+
+📸 Interfaz extendida del ORM (Spring Data JPA):
+![Class Extended ORM](../images/class_extendes_orm.png)
+
+📸 Implementación del repositorio (puente entre JPA y el dominio):
+![Repository implement](../images/repository_implement.png)
+
+📸 Controlador REST:
+![Controller App](../images/controller_app.png)
+> El controlador se encarga de recibir las peticiones HTTP y delegarlas al caso de uso correspondiente.
+
+## 📣 Publicación y consumo de eventos (Interacción entre módulos)
+Cuando una Subtask es creada, el caso de uso CreateSubtaskUseCase publica un evento de dominio:
+
+```java
+domainEventPublisher.publish(new SubtaskCreatedEvent(subtask.getId()));
+```
+Este evento es capturado en el módulo notifications mediante un listener:
+
+```java
+@EventListener
+public void onSubtaskCreated(SubtaskCreatedEvent event) {
+    // Notificación por consola
+}
+```
+
+✅ Esto permite que notifications reaccione al evento sin estar acoplado a subtasks, cumpliendo con el principio de inversión de dependencias y comunicación por eventos.
+
+___
+
+## 🗄️ Conexión a Base de Datos (PostgreSQL)
+
+Para que nuestra aplicación Spring Boot se comunique con una base de datos PostgreSQL, necesitamos configurar el archivo `application.properties`, ubicado en la carpeta `resources`.
+
+📚 Recursos útiles:
+- [Guía en w3resource](https://www.w3resource.com/PostgreSQL/snippets/postgresql-spring-boot.php)
+- [Documentación oficial Spring Boot](https://docs.spring.io/spring-boot/docs/1.5.22.RELEASE/reference/html/boot-features-sql.html)
+
+📂 Ubicación del archivo de configuración:
+```
+└── 📁main
+    └── 📁java
+        └── 📁com
+            └── 📁eficientis
+                └── 📁projects
+                    └── 📁tasks
+    └── 📁resources
+        └── application.properties
+        └── 📁static
+        ├── templates
+```
+
+### ✍️ Configuración basica
+
+En `application.properties` agregamos:
+
+```properties
+# Nombre de la aplicación
+spring.application.name=tasks
+
+# Configuración de la base de datos PostgreSQL
+spring.datasource.url=jdbc:postgresql://localhost:5432/subtask
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# Configuración de JPA (ORM)
+spring.jpa.hibernate.ddl-auto=update # También puede ser: create, validate, none
+spring.jpa.show-sql=true # Muestra las sentencias SQL en consola
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect # lenguaje que usa la bd
+```
+
+![run_conf_bd](../images/run_conf_bd.png)
+> No olvidar crear la base de datos subtask en tu servidor PostgreSQL, y que los datos de conexión sean correctos.
+
+___
+
+## 🚀 Ejecución del Endpoint de Subtasks
+
+Una vez configurada la conexión, puedes probar el endpoint principal para crear una subtarea.
+
+* Método HTTP: POST
+
+* URL: http://localhost:8080/api/subtasks
+
+* Content-Type: application/json
+
+### 📦 Body de la solciitud
+![body_request](../images/body_request.png)
+> La respuesta incluye el objeto completo creado
+
+## 🖥️ Resultado en consola
+Al enviar la solicitud, verás en consola:
+
+* Las sentencias SQL generadas por Hibernate
+
+* La notificación del evento recibido por el listener
+
+📸 Ejemplo del resultado en consola:
+![postman](../images/postman.png)
+

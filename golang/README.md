@@ -143,6 +143,3 @@ Encore expone dos puertos clave para que puedas interactuar con tu aplicación:
 |-------------------|-------------------------------------------------------------------------------------------------|
 | `localhost:4000`  | 🌍 **Puerto público de la API**: Expone los endpoints definidos como `public`. |
 | `localhost:9400`  | 🧠 **Dashboard interactivo de Encore**: Interfaz visual para: <br>• Testear endpoints <br>• Ver trazabilidad y logs <br>• Visualizar servicios y arquitectura <br>• Consultar documentación generada automáticamente |
-
-
-[`hola-mundo`](./hola-mundo)

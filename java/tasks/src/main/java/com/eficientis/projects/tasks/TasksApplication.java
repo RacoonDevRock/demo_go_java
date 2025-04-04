@@ -4,7 +4,7 @@ package com.eficientis.projects.tasks; // indica que ubicacion tiene en el paque
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication // marca el punto de entrada de tu aplicación
+@SpringBootApplication(scanBasePackages = "com.eficientis") // marca el punto de entrada de tu aplicación
 public class TasksApplication {
 
 	public static void main(String[] args) {
