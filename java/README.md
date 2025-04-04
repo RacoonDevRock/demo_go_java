@@ -1,4 +1,20 @@
-# Spring Boot con Java ☕
+# Java
+Para poder ejecutar java lo primero indispensable es descarga su kit de desarrollo, lo que ayuda a compilar los archivos .java e implenenta las herramientas y bibliotecas necesarias para el desarrollo de sus apps.
+
+[Descargar Java JDK](https://www.oracle.com/pe/java/technologies/downloads/)
+![Web Official JDK Oracle](../images/download_java_jdk.png)
+
+> No olvidar configurar correctamente las variables de entorno ya que puede ocasionar problemas
+
+![Environment variables](../images/environments_variables.png)
+
+## Gestor de dependecias Maven (Recomendado) o Gradle
+Permiten gestionar las dependencias del proyecto , compilan, testean y empacan tu app.
+
+* [Maven](https://maven.apache.org/download.cgi), sigue siendo mas usado debido a su tiempo y cobertura
+* [Gradle](https://gradle.org/install/), moderno y flexible.
+
+# Spring Boot Framework Backend con Java ☕
 
 Inicializar un proyecto en Java puede ser tedioso debido a la gran cantidad de configuraciones y dependencias necesarias para su correcto funcionamiento. Para simplificar este proceso, existe una herramienta llamada **Spring Initializr**, que permite generar una estructura de proyecto lista para usarse, con solo unos pocos clics.
 
@@ -49,8 +65,8 @@ También puedes explorar más librerías y herramientas compatibles desde:
 
 Para trabajar con Spring Boot, puedes usar:
 
-- **Visual Studio Code**
-- **IntelliJ IDEA** (Altamente recomendado por su soporte avanzado para Spring)
+- [**Visual Studio Code**](https://code.visualstudio.com/)
+- **IntelliJ IDEA** (Recomendado por gran cantidad de funcionalidades avanzadas, version de paga)
 
 🔗 [Descargar IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
@@ -209,5 +225,8 @@ public class TasksApplication {
 
 ___
 
+## Fuentes: 
 
 [Guia de estructuracion DDD + Arq. Hexagonal](https://medium.com/@juannegrin/construyendo-una-restful-api-con-spring-boot-integraci%C3%B3n-de-ddd-y-arquitectura-hexagonal-af824a3a4d05) 
+
+[Arquitectura Hexagonal con SpringBoot](https://medium.com/@oliveraluis11/arquitectura-hexagonal-con-spring-boot-parte-1-57b797eca69c)
