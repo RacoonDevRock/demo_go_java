@@ -91,6 +91,18 @@ al abrir proyectos por primera vez te mostrara un anuncio de seguridad, en caso 
 
 ![IntelliJ IDEA Install](../images/intellj_idea_open_project_security.png)
 
+![Config Init App 1](../images/config_init_app_1.png)
+
+![Config Init App 2](../images/config_init_app_2.png)
+
+![Config Init App 3](../images/config_init_app_3.png)
+
+![Config Init App 4](../images/config_init_app_4.png)
+
+![Config Init App 5](../images/config_init_app_5.png)
+
+![Config Init App Finish](../images/config_init_app_6.png)
+
 ---
 
 ## 📂 Explorando la estructura del proyecto Spring Boot
