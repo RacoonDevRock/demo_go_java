@@ -1,0 +1,1 @@
+## Implementa entidades, repositorios, logica
