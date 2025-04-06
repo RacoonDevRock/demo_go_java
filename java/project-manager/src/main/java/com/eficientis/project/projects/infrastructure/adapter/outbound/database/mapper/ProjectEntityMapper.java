@@ -1,9 +1,9 @@
-package com.eficientis.project.projects.infrastructure.persistence.mapper;
+package com.eficientis.project.projects.infrastructure.adapter.outbound.database.mapper;
 
 import com.eficientis.project.projects.domain.model.Project;
 import com.eficientis.project.projects.domain.model.ProjectId;
 import com.eficientis.project.projects.domain.model.ProjectStatus;
-import com.eficientis.project.projects.infrastructure.persistence.ProjectEntity;
+import com.eficientis.project.projects.infrastructure.adapter.outbound.database.ProjectEntity;
 
 public class ProjectEntityMapper {
 

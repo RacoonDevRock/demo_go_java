@@ -1,15 +1,14 @@
-package com.eficientis.project.projects.infrastructure.repository.impl;
+package com.eficientis.project.projects.infrastructure.adapter.outbound.database.impl;
 
 import com.eficientis.project.projects.domain.model.Project;
 import com.eficientis.project.projects.domain.model.ProjectId;
 import com.eficientis.project.projects.domain.repository.ProjectRepository;
-import com.eficientis.project.projects.infrastructure.persistence.ProjectEntity;
-import com.eficientis.project.projects.infrastructure.persistence.mapper.ProjectEntityMapper;
-import com.eficientis.project.projects.infrastructure.repository.IProjectRepository;
+import com.eficientis.project.projects.infrastructure.adapter.outbound.database.IProjectRepository;
+import com.eficientis.project.projects.infrastructure.adapter.outbound.database.ProjectEntity;
+import com.eficientis.project.projects.infrastructure.adapter.outbound.database.mapper.ProjectEntityMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 

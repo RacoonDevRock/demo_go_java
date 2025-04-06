@@ -2,6 +2,8 @@ package com.eficientis.project.projects.application.ports.in;
 
 import com.eficientis.project.projects.application.dto.ProjectDTO;
 
-public interface CreateProjectUseCase {
-    void execute(ProjectDTO projectDTO);
+import java.util.List;
+
+public interface FindAllProjectsUseCase {
+    List<ProjectDTO> execute();
 }

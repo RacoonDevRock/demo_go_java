@@ -1,6 +1,5 @@
-package com.eficientis.project.projects.infrastructure.repository;
+package com.eficientis.project.projects.infrastructure.adapter.outbound.database;
 
-import com.eficientis.project.projects.infrastructure.persistence.ProjectEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
