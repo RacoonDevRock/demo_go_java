@@ -1,1 +1,0 @@
-## Posee controladores, repos con JPA, mappers, etc. (Adaptadores)
