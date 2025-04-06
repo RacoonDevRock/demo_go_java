@@ -146,3 +146,5 @@ Encore expone dos puertos clave para que puedas interactuar con tu aplicación:
 
 
 ## 
+
+[Guia de estructuracion DDD + Arq. Hexagonal](https://mehdihadeli.github.io/awesome-go-education/ddd) 

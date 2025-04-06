@@ -1,1 +1,0 @@
-## Implementa casos de uso / logica de aplicación

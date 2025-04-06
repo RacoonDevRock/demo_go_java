@@ -1,26 +1,89 @@
 ```
-📁main
-├── 📁java.com.eficientis
-│           └── 📁project
-│               └── ProjectManagerApplication.java       ✅ (punto de entrada principal)
-│               └── 📁projects                           ✅ (vertical slice: "proyectos")
-│                   ├── 📁application                    ✅ capa de aplicación (casos de uso)
-│                   │   ├── 📁dto                         ✅ entrada/salida de datos
-│                   │   ├── 📁excepcion                   ✅ excepciones de negocio (bien ubicadas)
-│                   │   ├── 📁ports
-│                   │   │   └── 📁in                      ✅ puertos de entrada (interfaces)
-│                   │   └── 📁service                     ✅ implementación de casos de uso
-│                   ├── 📁domain                          ✅ capa de dominio (núcleo)
-│                   │   ├── 📁model                       ✅ entidades, value objects
-│                   │   ├── 📁repository                  ✅ puertos de salida
-│                   │   └── 📁service                     ⚠️ (puedes dejarla vacía o usarla para servicios de dominio si aplican)
-│                   └── 📁infrastructure                 ✅ capa técnica (implementaciones)
-│                       ├── 📁adapter                     ⚠️ aún sin uso, pero útil si usas otros canales como mensajes, CLI, etc.
-│                       ├── 📁controller                  ✅ controladores REST (adaptador de entrada)
-│                       ├── 📁persistence                 ✅ mapeo a base de datos
-│                       │   ├── 📁mapper                  ✅ mapeador entidad ↔ dominio
-│                       │   └── ProjectEntity.java        ✅ entidad JPA
-│                       └── 📁repository                  ✅ repositorio concreto
-│                           ├── 📁impl                    ✅ implementación real
-│                           └── IProjectRepository.java   ✅ JpaRepository
+└── 📁src
+    └── 📁main
+        └── 📁java
+            └── 📁com
+                └── 📁eficientis
+                    └── 📁project
+                        └── 📁infrastructure
+                            └── CorsConfig.java
+                        └── ProjectManagerApplication.java
+                        └── 📁projects
+                            └── 📁application
+                                └── 📁dto
+                                    └── 📁mapper
+                                        └── ProjectDtoMapper.java
+                                    └── ProjectDTO.java
+                                └── 📁excepcion
+                                    └── NotFoundProjectException.java
+                                └── 📁ports
+                                    └── 📁in
+                                        └── CreateProjectUseCase.java
+                                        └── FindAllProjectsUseCase.java
+                                        └── UpdateProjectStatusUseCase.java
+                                └── 📁service
+                                    └── CreateProjectService.java
+                                    └── FindAllProjectsService.java
+                                    └── UpdateProjectStatusService.java
+                            └── 📁domain
+                                └── 📁model
+                                    └── Project.java
+                                    └── ProjectId.java
+                                    └── ProjectStatus.java
+                                └── 📁repository
+                                    └── ProjectRepository.java
+                                └── 📁service
+                            └── 📁infrastructure
+                                └── 📁adapter
+                                    └── 📁inbound
+                                        └── ProjectController.java
+                                    └── 📁outbound
+                                        └── 📁database
+                                            └── 📁impl
+                                                └── ProjectRepositoryImpl.java
+                                            └── IProjectRepository.java
+                                            └── 📁mapper
+                                                └── ProjectEntityMapper.java
+                                            └── ProjectEntity.java
+                        └── 📁tasks
+                            └── 📁application
+                                └── 📁dto
+                                    └── TaskDTO.java
+                                └── 📁event
+                                    └── TaskCreatedEvent.java
+                                └── 📁ports
+                                    └── 📁in
+                                        └── CreateTaskUseCase.java
+                                └── 📁service
+                                    └── CreateTaskService.java
+                            └── 📁domain
+                                └── 📁model
+                                    └── Task.java
+                                    └── TaskStatus.java
+                                └── 📁repository
+                                    └── TaskRepository.java
+                            └── 📁infrastructure
+                                └── 📁adapter
+                                    └── 📁inbound
+                                        └── 📁eventListener
+                                            └── TaskCreatedListener.java
+                                        └── TaskController.java
+                                    └── 📁outbound
+                                        └── 📁database
+                                            └── 📁impl
+                                                └── TaskRepositoryImpl.java
+                                            └── ITaskRepository.java
+                                            └── 📁mapper
+                                                └── TaskEntityMapper.java
+                                            └── TaskEntity.java
+        └── 📁resources
+            └── application.properties
+            └── 📁static
+            └── 📁templates
+    └── 📁test
+        └── 📁java
+            └── 📁com
+                └── 📁eficientis
+                    └── 📁project
+                        └── ProjectManagerApplicationTests.java
 ```
