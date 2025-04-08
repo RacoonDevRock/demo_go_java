@@ -12,7 +12,7 @@ public class Project {
     private LocalDate startDate;
     private LocalDate endDate;
     private ProjectStatus status;
-    private LocalDateTime createdAt;
+    private final LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
     public Project(ProjectId id, String name, String description, LocalDate startDate, LocalDate endDate, ProjectStatus status, LocalDateTime createdAt, LocalDateTime updatedAt) {
@@ -39,7 +39,6 @@ public class Project {
         return status == ProjectStatus.DONE;
     }
 
-
     public ProjectId getId() {
         return id;
     }
@@ -55,6 +54,7 @@ public class Project {
     public LocalDate getStartDate() {
         return startDate;
     }
+
     public LocalDate getEndDate() {
         return endDate;
     }

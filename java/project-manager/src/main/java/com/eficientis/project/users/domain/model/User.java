@@ -5,6 +5,8 @@ public class User {
     private String email;
     private String hashedPassword;
     private String displayName;
+    private String avatarUrl;
+    private String isLoginDate;
     private boolean isGlobalAdmin;
 
     public User(UserId id, String email, String hashedPassword, String displayName, boolean isGlobalAdmin) {
@@ -13,6 +15,16 @@ public class User {
         this.hashedPassword = hashedPassword;
         this.displayName = displayName;
         this.isGlobalAdmin = isGlobalAdmin;
+    }
+
+    public User(UserId id, String email, String hashedPassword, String displayName, boolean isGlobalAdmin, String avatarUrl, String isLoginDate) {
+        this.id = id;
+        this.email = email;
+        this.hashedPassword = hashedPassword;
+        this.displayName = displayName;
+        this.isGlobalAdmin = isGlobalAdmin;
+        this.avatarUrl = avatarUrl;
+        this.isLoginDate = isLoginDate;
     }
 
     public User() {}
@@ -55,5 +67,21 @@ public class User {
 
     public void setGlobalAdmin(boolean globalAdmin) {
         isGlobalAdmin = globalAdmin;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    public String getIsLoginDate() {
+        return isLoginDate;
+    }
+
+    public void setIsLoginDate(String isLoginDate) {
+        this.isLoginDate = isLoginDate;
     }
 }

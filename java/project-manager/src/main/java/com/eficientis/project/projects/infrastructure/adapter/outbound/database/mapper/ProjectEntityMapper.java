@@ -8,16 +8,16 @@ import com.eficientis.project.projects.infrastructure.adapter.outbound.database.
 public class ProjectEntityMapper {
 
     public static ProjectEntity toEntity(Project domain) {
-        ProjectEntity entity = new ProjectEntity();
-        entity.setId(domain.getId().value());
-        entity.setName(domain.getName());
-        entity.setDescription(domain.getDescription());
-        entity.setStartDate(domain.getStartDate());
-        entity.setEndDate(domain.getEndDate());
-        entity.setStatus(domain.getStatus());
-        entity.setCreatedAt(domain.getCreatedAt());
-        entity.setUpdatedAt(domain.getUpdatedAt());
-        return entity;
+        return new ProjectEntity(
+                domain.getId().value(),
+                domain.getName(),
+                domain.getDescription(),
+                domain.getStartDate(),
+                domain.getEndDate(),
+                domain.getStatus(),
+                domain.getCreatedAt(),
+                domain.getUpdatedAt()
+        );
     }
 
     public static Project toDomain(ProjectEntity entity) {
