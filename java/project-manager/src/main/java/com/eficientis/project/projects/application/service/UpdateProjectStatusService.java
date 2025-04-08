@@ -1,10 +1,10 @@
 package com.eficientis.project.projects.application.service;
 
-import com.eficientis.project.projects.application.excepcion.NotFoundProjectException;
+import com.eficientis.project.projects.application.exception.NotFoundProjectException;
 import com.eficientis.project.projects.application.ports.in.UpdateProjectStatusUseCase;
 import com.eficientis.project.projects.domain.model.Project;
 import com.eficientis.project.projects.domain.model.ProjectId;
-import com.eficientis.project.projects.domain.model.ProjectStatus;
+import com.eficientis.project.projects.domain.model.enums.ProjectStatus;
 import com.eficientis.project.projects.domain.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

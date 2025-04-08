@@ -31,7 +31,7 @@ public class ProjectRepositoryImpl implements ProjectRepository {
     }
 
     @Override
-    public Project  save(Project project) {
+    public Project save(Project project) {
         ProjectEntity savedEntity = repository.save(ProjectEntityMapper.toEntity(project));
         return ProjectEntityMapper.toDomain(savedEntity);
     }

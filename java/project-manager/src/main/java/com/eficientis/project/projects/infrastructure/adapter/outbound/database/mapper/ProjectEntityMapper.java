@@ -2,7 +2,7 @@ package com.eficientis.project.projects.infrastructure.adapter.outbound.database
 
 import com.eficientis.project.projects.domain.model.Project;
 import com.eficientis.project.projects.domain.model.ProjectId;
-import com.eficientis.project.projects.domain.model.ProjectStatus;
+import com.eficientis.project.projects.domain.model.enums.ProjectStatus;
 import com.eficientis.project.projects.infrastructure.adapter.outbound.database.ProjectEntity;
 
 public class ProjectEntityMapper {

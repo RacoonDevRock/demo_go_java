@@ -1,5 +1,7 @@
 package com.eficientis.project.projects.domain.model;
 
+import com.eficientis.project.projects.domain.model.enums.ProjectStatus;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 

@@ -1,4 +1,4 @@
-package com.eficientis.project.projects.application.excepcion;
+package com.eficientis.project.projects.application.exception;
 
 public class NotFoundProjectException extends RuntimeException {
     public NotFoundProjectException(String message) {

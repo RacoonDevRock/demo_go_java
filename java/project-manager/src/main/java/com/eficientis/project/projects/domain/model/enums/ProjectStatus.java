@@ -1,4 +1,4 @@
-package com.eficientis.project.projects.domain.model;
+package com.eficientis.project.projects.domain.model.enums;
 
 public enum ProjectStatus {
     NOT_STARTED,
